@@ -1,10 +1,21 @@
+import 'package:bol_app/ui_layer/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-class NavigationBarWidget extends StatelessWidget
+class NavigationBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
   const NavigationBarWidget({super.key});
+
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  _NavigationBarWidgetState createState() => _NavigationBarWidgetState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight); // altura estándar de la AppBar
+}
+
+class _NavigationBarWidgetState extends State<NavigationBarWidget> {
+  // Variables para el efecto hover
+  bool _isHovered1 = false;
+  bool _isHovered2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +32,61 @@ class NavigationBarWidget extends StatelessWidget
               'assets/logo.png', // Asegúrate de tener tu logo en la carpeta assets
               width: 50,
             ),
-            // Textos de botones en el medio
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: () {
-                    // Acción para el primer texto botón
-                  },
-                  child: Text('Texto 1', style: TextStyle(color: Colors.black)),
+                // Texto 1 con hover y navegación
+                MouseRegion(
+                  onEnter: (_) => setState(() => _isHovered1 = true),
+                  onExit: (_) => setState(() => _isHovered1 = false),
+                  child: GestureDetector(
+                    onTap: () {
+                      // Redirige al hacer clic en el texto 1
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ), // Reemplaza con tu página
+                      );
+                    },
+                    child: Text(
+                      'Texto 1',
+                      style: TextStyle(
+                        color: _isHovered1
+                            ? Colors.blue
+                            : Colors.black, // Cambia de color al hacer hover
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(width: 20),
-                TextButton(
-                  onPressed: () {
-                    // Acción para el segundo texto botón
-                  },
-                  child: Text('Texto 2', style: TextStyle(color: Colors.black)),
+                // Texto 2 con hover y navegación
+                MouseRegion(
+                  onEnter: (_) => setState(() => _isHovered2 = true),
+                  onExit: (_) => setState(() => _isHovered2 = false),
+                  child: GestureDetector(
+                    onTap: () {
+                      // Redirige al hacer clic en el texto 2
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ), // Reemplaza con tu página
+                      );
+                    },
+                    child: Text(
+                      'Texto 2',
+                      style: TextStyle(
+                        color: _isHovered2
+                            ? Colors.blue
+                            : Colors.black, // Cambia de color al hacer hover
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -47,10 +97,11 @@ class NavigationBarWidget extends StatelessWidget
                   onPressed: () {
                     // Acción para Ingresar
                   },
-                  child: Text(
-                    'Ingresar',
-                    style: TextStyle(color: Colors.black),
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.transparent,
                   ),
+                  child: Text('Ingresar'),
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
