@@ -29,7 +29,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           children: [
             // Logo a la izquierda
             Image.asset(
-              'assets/logo.png', // Asegúrate de tener tu logo en la carpeta assets
+              'assets/images/logoeditado.png', // Asegúrate de tener tu logo en la carpeta assets
               width: 50,
             ),
             Row(
