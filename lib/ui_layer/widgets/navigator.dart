@@ -29,8 +29,10 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           children: [
             // Logo a la izquierda
             Image.asset(
-              'assets/images/logoeditado.png', // Asegúrate de tener tu logo en la carpeta assets
-              width: 50,
+              'assets/images/logo.png', // Asegúrate de tener tu logo en la carpeta assets
+              width: 200,
+              height: 250,
+              fit: BoxFit.cover,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +52,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                       );
                     },
                     child: Text(
-                      'Texto 1',
+                      'Doy Laburo',
                       style: TextStyle(
                         color: _isHovered1
                             ? Colors.blue
@@ -77,7 +79,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                       );
                     },
                     child: Text(
-                      'Texto 2',
+                      'Busco Laburo',
                       style: TextStyle(
                         color: _isHovered2
                             ? Colors.blue
